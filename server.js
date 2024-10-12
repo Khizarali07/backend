@@ -31,11 +31,7 @@ const DB = process.env.DATABASE.replace(
 
 console.log(DB);
 
-mongoose
-  .connect(
-    "mongodb+srv://khizarali:khizar24@cluster0.hod0c.mongodb.net/CUSTOMERS?retryWrites=true&w=majority&appName=Cluster0"
-  )
-  .then(() => console.log("DB connection successful!"));
+mongoose.connect(DB).then(() => console.log("DB connection successful!"));
 
 app.use("/api/v1/users/login", authController.login);
 app.use("/api/v1/users/signup", authController.signup);

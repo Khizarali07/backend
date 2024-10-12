@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-// const bodyParser = require("body-parser");
+
 // const dotenv = require("dotenv");
 
 const authController = require("./Controller/authController");
@@ -21,7 +21,6 @@ app.use(
     credentials: true, // If you need to send cookies or headers with requests
   })
 );
-// app.use(bodyParser());
 app.use(cookieParser());
 
 const DB = process.env.DATABASE.replace(
@@ -96,8 +95,10 @@ app.get("/api/v1/users/getdata/:id", authController.getdata);
 app.post("/api/v1/users/updateuser/:id", authController.updateuser);
 
 // activity Routes :
-app.post("/api/v1/users/createactivity", activityController.createActivity);
+app.post("/api/v1/users/createactivity/:id", activityController.createActivity);
 app.post("/api/v1/users/getallactivity", activityController.allActivity);
+app.get("/api/v1/users/deleteactivity/:id", activityController.deleteActivity);
+app.post("/api/v1/users/updateactivity/:id", activityController.updateActivity);
 
 app.listen(3000, () => {
   console.log(`App running on port ${3000}...`);

@@ -8,7 +8,6 @@ const activitySchema = new mongoose.Schema({
   },
   assignedTo: {
     type: String,
-    required: [true, "Please provide the name of the assignee"],
   },
   dateAssigned: {
     type: Date,

@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 
 const authController = require("./Controller/authController");
@@ -14,8 +14,14 @@ dotenv.config({ path: "./config.env" });
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-app.use(bodyParser());
+app.use(
+  cors({
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // If you need to send cookies or headers with requests
+  })
+);
+// app.use(bodyParser());
 app.use(cookieParser());
 
 const DB = process.env.DATABASE.replace(

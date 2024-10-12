@@ -31,7 +31,16 @@ const DB = process.env.DATABASE.replace(
 
 console.log(DB);
 
-mongoose.connect(DB).then(() => console.log("DB connection successful!"));
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("DB connection successful!"))
+  .catch((err) => {
+    console.error("DB connection error:", err.message);
+    process.exit(1); // Exit on database connection error
+  });
 
 app.use("/api/v1/users/login", authController.login);
 app.use("/api/v1/users/signup", authController.signup);

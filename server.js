@@ -91,7 +91,7 @@ app.use(
 );
 
 app.get("/api/v1/users/delete/:id", authController.deleteuser);
-app.get("/api/v1/users/getdata/:id", authController.getdata);
+app.get("/api/v1/users/getdata/:token", authController.getdata);
 app.post("/api/v1/users/updateuser/:id", authController.updateuser);
 
 // activity Routes :

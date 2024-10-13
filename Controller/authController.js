@@ -74,16 +74,18 @@ exports.getAllUsers = async (req, res, next) => {
 };
 
 exports.getdata = async (req, res, next) => {
-  const data = await User.findById(req.params.id);
+  const token = req.params.token;
 
-  // SEND RESPONSE
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  const currentuser = await User.find({ _id: decoded.id });
+
   res.status(200).json({
     status: "success",
-    results: data.length,
-    data: {
-      data,
-    },
+    data: { currentuser },
   });
+
+  next();
 };
 
 exports.updateuser = async (req, res, next) => {

@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://frontend-iota-henna.vercel.app", // Allow all origins
+    origin: "https://frontend-er7j.vercel.app", // Allow all origins
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // If you need to send cookies or headers with requests
   })

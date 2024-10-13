@@ -16,12 +16,13 @@ const app = express();
 
 app.use(express.json());
 app.use(
-  cors({
-    origin: "https://frontend-er7j.vercel.app", // Your frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false, // Allow credentials like cookies
-  })
+  cors()
+  // ({
+  //   origin: "https://frontend-er7j.vercel.app", // Your frontend URL
+  //   methods: ["GET", "POST", "PUT", "DELETE"],
+  //   allowedHeaders: ["Content-Type", "Authorization"],
+  //   credentials: false, // Allow credentials like cookies
+  // })
 );
 
 app.options("*", cors());

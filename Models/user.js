@@ -37,6 +37,11 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  role: {
+    type: String,
+    enum: ["Admin", "User"],
+    default: "User",
+  },
 });
 userSchema.pre("save", async function (next) {
   // Only run this function if password was actually modified

@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 
 // const dotenv = require("dotenv");
 
@@ -14,8 +15,16 @@ const activityController = require("./Controller/activityController");
 const app = express();
 
 app.use(express.json());
-app.options("*", cors());
+app.use(
+  cors({
+    origin: "https://frontend-er7j.vercel.app", // Your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Allow credentials like cookies
+  })
+);
 
+app.options("*", cors());
+app.use(bodyParser());
 app.use(cookieParser());
 
 const DB = process.env.DATABASE.replace(
@@ -26,10 +35,7 @@ const DB = process.env.DATABASE.replace(
 console.log(DB);
 
 mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(DB)
   .then(() => console.log("DB connection successful!"))
   .catch((err) => {
     console.error("DB connection error:", err.message);

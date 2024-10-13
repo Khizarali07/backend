@@ -19,6 +19,7 @@ app.use(
   cors({
     origin: "https://frontend-er7j.vercel.app", // Your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: false, // Allow credentials like cookies
   })
 );

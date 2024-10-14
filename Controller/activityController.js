@@ -6,7 +6,7 @@ const User = require("../Models/user");
 
 exports.createActivity = async (req, res, next) => {
   const user = User.findById(req.body.formData.linkID);
-  req.body.assignedTo = `${user.firstName} ${user.lastName}`;
+  req.body.formData.assignedTo = `${user.firstName} ${user.lastName}`;
   const currentActivity = await Activity.create(req.body.formData);
   console.log(currentActivity);
 

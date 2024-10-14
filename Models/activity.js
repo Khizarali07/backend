@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require("./user");
 
 const activitySchema = new mongoose.Schema({
   LinkID: {
@@ -19,6 +20,7 @@ const activitySchema = new mongoose.Schema({
   },
   activityDescription: {
     type: String,
+    default: "No activity description",
   },
   notes: {
     type: String, // Allows storing text or comments about the activity
@@ -29,6 +31,7 @@ const activitySchema = new mongoose.Schema({
   },
   dateFollowUp: {
     type: Date, // Added this based on your table structure, for follow-up activities
+    default: null,
   },
 });
 

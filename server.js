@@ -4,13 +4,12 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
-// const dotenv = require("dotenv");
-
 const authController = require("./Controller/authController");
 const userController = require("./Controller/userController");
 const User = require("./Models/user");
 const activityController = require("./Controller/activityController");
 
+// const dotenv = require("dotenv");
 // dotenv.config({ path: "./config.env" });
 const app = express();
 

@@ -14,6 +14,21 @@ exports.createActivity = async (req, res, next) => {
   next();
 };
 
+exports.getallActivity = async (req, res, next) => {
+  const currentActivity = await Activity.find();
+
+  // SEND RESPONSE
+  res.status(200).json({
+    status: "success",
+    results: currentActivity.length,
+    data: {
+      currentActivity,
+    },
+  });
+
+  next();
+};
+
 exports.allActivity = async (req, res, next) => {
   const token = req.body.jwt;
 

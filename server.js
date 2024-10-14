@@ -89,7 +89,8 @@ app.post("/api/v1/users/updateuser/:id", authController.updateuser);
 
 // activity Routes :
 app.post("/api/v1/users/createactivity", activityController.createActivity);
-app.post("/api/v1/users/getallactivity", activityController.allActivity);
+app.post("/api/v1/users/getactivity", activityController.allActivity);
+app.get("/api/v1/users/getallactivity", activityController.getallActivity);
 app.get("/api/v1/users/deleteactivity/:id", activityController.deleteActivity);
 app.post("/api/v1/users/updateactivity/:id", activityController.updateActivity);
 

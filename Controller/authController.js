@@ -62,7 +62,7 @@ exports.signup = async (req, res, next) => {
     // Handle validation errors (like password length)
     if (err.errors) {
       if (err.errors.password) {
-        message = err.errors.password; // Password validation message
+        message = "Password length can't be shorter than 8"; // Password validation message
       }
     }
 

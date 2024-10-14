@@ -43,8 +43,34 @@ exports.login = async (req, res, next) => {
 };
 
 exports.signup = async (req, res, next) => {
-  console.log(req.body);
-  const newUser = await User.create(req.body.formData);
+  try {
+    const newUser = await User.create(req.body.formData);
+    res.status(201).json({
+      status: "success",
+      data: {
+        user: newUser,
+      },
+    });
+  } catch (err) {
+    let message = "An error occurred.";
+
+    // Handle duplicate email error (Mongoose Error Code 11000)
+    if (err.code === 11000) {
+      message = "Email address is already in use.";
+    }
+
+    // Handle validation errors (like password length)
+    if (err.errors) {
+      if (err.errors.password) {
+        message = "password is shorter than the minimum allowed length (8)"; // Password validation message
+      }
+    }
+
+    res.status(400).json({
+      status: "fail",
+      message,
+    });
+  }
 
   next();
 };

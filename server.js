@@ -4,28 +4,19 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
-// const dotenv = require("dotenv");
+const dotenv = require("dotenv");
 
 const authController = require("./Controller/authController");
 const userController = require("./Controller/userController");
 const User = require("./Models/user");
 const activityController = require("./Controller/activityController");
 
-// dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "./config.env" });
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors()
-  // ({
-  //   origin: "https://frontend-er7j.vercel.app", // Your frontend URL
-  //   methods: ["GET", "POST", "PUT", "DELETE"],
-  //   allowedHeaders: ["Content-Type", "Authorization"],
-  //   credentials: false, // Allow credentials like cookies
-  // })
-);
+app.use(cors());
 
-// app.options("*", cors());
 app.use(bodyParser());
 app.use(cookieParser());
 

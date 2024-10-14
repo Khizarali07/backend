@@ -42,7 +42,8 @@ exports.deleteActivity = async (req, res, next) => {
 exports.updateActivity = async (req, res, next) => {
   const data = await Activity.findByIdAndUpdate(
     req.params.id,
-    req.body.formData
+    req.body.formData,
+    { new: true, runValidators: true } // Return the updated document and validate new data
   );
   console.log(data);
   // SEND RESPONSE

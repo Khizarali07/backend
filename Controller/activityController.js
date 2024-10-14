@@ -1,6 +1,7 @@
 const { promisify } = require("util");
 const Activity = require("../Models/activity");
 const jwt = require("jsonwebtoken");
+const User = require("../Models/user");
 
 exports.createActivity = async (req, res, next) => {
   const currentActivity = await Activity.create(req.body.formData);

@@ -32,6 +32,22 @@ const activitySchema = new mongoose.Schema({
   },
 });
 
+activitySchema.pre("save", async function (next) {
+  // If LinkID is present and assignedTo is not yet set
+  if (this.LinkID && !this.assignedTo) {
+    // Fetch the user based on the LinkID
+    const user = await User.findById(this.LinkID);
+
+    if (user) {
+      // Set the assignedTo field as the user's full name
+      this.assignedTo = `${user.firstName} ${user.lastName}`;
+    } else {
+      return next(new Error("User not found")); // Handle the case where the user is not found
+    }
+  }
+  next();
+});
+
 const Activity = mongoose.model("Activity", activitySchema);
 
 module.exports = Activity;

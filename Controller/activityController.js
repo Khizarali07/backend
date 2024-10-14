@@ -4,11 +4,6 @@ const jwt = require("jsonwebtoken");
 const { log } = require("console");
 
 exports.createActivity = async (req, res, next) => {
-  const token = req.params.id;
-  console.log(token);
-
-  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  req.body.formData.LinkID = decoded.id;
   console.log(req.body);
   const currentActivity = await Activity.create(req.body.formData);
   console.log(currentActivity);

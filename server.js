@@ -89,7 +89,7 @@ app.get("/api/v1/users/getdata/:token", authController.getdata);
 app.post("/api/v1/users/updateuser/:id", authController.updateuser);
 
 // activity Routes :
-app.post("/api/v1/users/createactivity/:id", activityController.createActivity);
+app.post("/api/v1/users/createactivity", activityController.createActivity);
 app.post("/api/v1/users/getallactivity", activityController.allActivity);
 app.get("/api/v1/users/deleteactivity/:id", activityController.deleteActivity);
 app.post("/api/v1/users/updateactivity/:id", activityController.updateActivity);

@@ -40,6 +40,19 @@ exports.deleteActivity = async (req, res, next) => {
 };
 
 exports.updateActivity = async (req, res, next) => {
+  if (req.body.formData.LinkID) {
+    const user = await User.findById(req.body.formData.LinkID);
+    if (user) {
+      // Set assignedTo with the user's full name
+      req.body.formData.assignedTo = `${user.firstName} ${user.lastName}`;
+    } else {
+      return res.status(404).json({
+        status: "fail",
+        message: "User not found",
+      });
+    }
+  }
+
   const data = await Activity.findByIdAndUpdate(
     req.params.id,
     req.body.formData,

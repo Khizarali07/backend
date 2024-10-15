@@ -87,7 +87,7 @@ exports.deleteuser = async (req, res, next) => {
 };
 
 exports.getAllUsers = async (req, res, next) => {
-  const data = await User.find();
+  const data = await User.find({ role: "Member" });
 
   // SEND RESPONSE
   res.status(200).json({

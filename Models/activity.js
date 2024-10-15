@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const User = require("./user");
+const Member = require("./member");
 
 const activitySchema = new mongoose.Schema({
   LinkID: {
     type: mongoose.Schema.ObjectId,
-    ref: "User", // Assuming this refers to the "User" model
+    ref: "Member", // Assuming this refers to the "User" model
     required: [true, "Please enter a valid user ID"],
   },
   assignedTo: {

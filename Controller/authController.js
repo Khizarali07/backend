@@ -97,6 +97,8 @@ exports.getAllUsers = async (req, res, next) => {
       data,
     },
   });
+
+  next();
 };
 
 exports.getAll = async (req, res, next) => {
@@ -110,14 +112,14 @@ exports.getAll = async (req, res, next) => {
       data,
     },
   });
+
+  next();
 };
 
 exports.getdata = async (req, res, next) => {
-  const token = req.params.token;
+  const id = req.params.token;
 
-  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
-  const currentuser = await User.find({ _id: decoded.id });
+  const currentuser = await User.find({ _id: id });
 
   res.status(200).json({
     status: "success",
@@ -138,4 +140,6 @@ exports.updateuser = async (req, res, next) => {
       data,
     },
   });
+
+  next();
 };

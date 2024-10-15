@@ -35,6 +35,7 @@ mongoose
     process.exit(1); // Exit on database connection error
   });
 
+// auth Routes :
 app.use("/api/v1/users/login", authController.login);
 app.use("/api/v1/users/signup", authController.signup);
 
@@ -86,6 +87,7 @@ app.use(
   userController.getAll
 );
 
+//manager Routes :
 app.get("/api/v1/users/delete/:id", authController.deleteuser);
 app.get("/api/v1/users/getdata/:token", authController.getdata);
 app.post("/api/v1/users/updateuser/:id", authController.updateuser);

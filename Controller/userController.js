@@ -1,5 +1,6 @@
 const APIFeatures = require("./apifeatures");
 const User = require("../Models/user");
+const Member = require("../Models/member");
 
 exports.getAll = async (req, res, next) => {
   // To allow for nested GET reviews on tour (hack)
@@ -9,7 +10,7 @@ exports.getAll = async (req, res, next) => {
 
   // console.log(filter);
 
-  const features = await User.find(filter).sort(req.query.sort);
+  const features = await Member.find(filter).sort(req.query.sort);
   console.log(features);
 
   // const doc = await features.query.explain();

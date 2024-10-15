@@ -1,7 +1,6 @@
 const User = require("../Models/user");
 const jwt = require("jsonwebtoken");
-const APIFeatures = require("./apifeatures");
-const { ObjectId } = require("mongoose").Types;
+const Member = require("../Models/member");
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -87,7 +86,7 @@ exports.deleteuser = async (req, res, next) => {
 };
 
 exports.getAllUsers = async (req, res, next) => {
-  const data = await User.find({ role: "Member" });
+  const data = await Member.find();
 
   // SEND RESPONSE
   res.status(200).json({

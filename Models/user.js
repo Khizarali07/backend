@@ -28,18 +28,13 @@ const userSchema = new mongoose.Schema({
     default:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBBTsAvrej7tSjG9gSIxcJ4QU9R6qLNoCjWQ&s",
   },
-  status: {
-    type: String,
-    enum: ["Active", "Less Active", "Do Not Contact"],
-    default: "Active",
-  },
   datecreated: {
     type: Date,
     default: Date.now,
   },
   role: {
     type: String,
-    enum: ["Admin", "Manager", "Member"],
+    enum: ["Admin", "Manager"],
     default: "Manager",
   },
 });

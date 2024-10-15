@@ -8,6 +8,7 @@ const authController = require("./Controller/authController");
 const userController = require("./Controller/userController");
 const User = require("./Models/user");
 const activityController = require("./Controller/activityController");
+const managerController = require("./Controller/managerController");
 
 // const dotenv = require("dotenv");
 // dotenv.config({ path: "./config.env" });

@@ -92,7 +92,7 @@ app.get("/api/v1/users/delete/:id", authController.deleteuser);
 // user Routes :
 // app.get("/api/v1/users/getdata/:token", authController.getdata);
 app.post("/api/v1/users/createmember", userController.createmember);
-app.post("/api/v1/users/updateuser/:id", authController.updatemember);
+app.post("/api/v1/users/updatemember/:id", authController.updatemember);
 app.get("/api/v1/users/getusers", authController.getAllUsers);
 app.get("/api/v1/users/deletemember/:id", authController.deletemember);
 

@@ -34,7 +34,7 @@ exports.allActivity = async (req, res, next) => {
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  const currentActivity = await Activity.find({ LinkID: decoded.id });
+  const currentActivity = await Activity.find({ assignedTo: decoded.id });
 
   res.status(200).json({
     status: "success",

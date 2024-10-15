@@ -40,6 +40,7 @@ app.use("/api/v1/users/signup", authController.signup);
 
 app.use("/api/v1/users/getusers", authController.getAllUsers);
 app.use("/api/v1/users/getmanagers", managerController.getAllmanagers);
+app.use("/api/v1/users/getallusers", authController.getAll);
 
 app.use(
   "/api/v1/users/dateasc",

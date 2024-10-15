@@ -99,6 +99,19 @@ exports.getAllUsers = async (req, res, next) => {
   });
 };
 
+exports.getAll = async (req, res, next) => {
+  const data = await User.find();
+
+  // SEND RESPONSE
+  res.status(200).json({
+    status: "success",
+    results: data.length,
+    data: {
+      data,
+    },
+  });
+};
+
 exports.getdata = async (req, res, next) => {
   const token = req.params.token;
 

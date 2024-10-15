@@ -38,10 +38,7 @@ mongoose
 // auth Routes :
 app.use("/api/v1/users/login", authController.login);
 
-app.use("/api/v1/users/getusers", authController.getAllUsers);
-
 app.use("/api/v1/users/getallusers", authController.getAll);
-
 app.use(
   "/api/v1/users/dateasc",
   userController.aliasTopToursasc,
@@ -87,13 +84,15 @@ app.use(
 );
 
 //manager Routes :
-app.use("/api/v1/users/signup", authController.signup);
+app.post("/api/v1/users/signup", authController.signup);
 app.get("/api/v1/users/getmanagers", managerController.getAllmanagers);
 app.post("/api/v1/users/updateuser/:id", authController.updateuser);
 app.get("/api/v1/users/delete/:id", authController.deleteuser);
 
 // user Routes :
 app.get("/api/v1/users/getdata/:token", authController.getdata);
+app.post("/api/v1/users/createmember", userController.createmember);
+app.use("/api/v1/users/getusers", authController.getAllUsers);
 
 // activity Routes :
 app.post("/api/v1/users/createactivity", activityController.createActivity);

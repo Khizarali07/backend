@@ -70,3 +70,15 @@ exports.aliasTopToursnotdesc = (req, res, next) => {
   req.query.fields = { status: "Do Not Contact" };
   next();
 };
+
+exports.createmember = async (req, res, next) => {
+  const newUser = await Member.create(req.body.formData);
+  res.status(201).json({
+    status: "success",
+    data: {
+      user: newUser,
+    },
+  });
+
+  next();
+};

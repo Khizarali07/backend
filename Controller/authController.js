@@ -85,6 +85,17 @@ exports.deleteuser = async (req, res, next) => {
   next();
 };
 
+exports.deletemember = async (req, res, next) => {
+  const tour = await Member.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({
+    status: "success",
+    data: null,
+  });
+
+  next();
+};
+
 exports.getAllUsers = async (req, res, next) => {
   const data = await Member.find();
 
@@ -130,6 +141,21 @@ exports.getdata = async (req, res, next) => {
 
 exports.updateuser = async (req, res, next) => {
   const data = await User.findByIdAndUpdate(req.params.id, req.body.formData);
+  console.log(data);
+  // SEND RESPONSE
+  res.status(200).json({
+    status: "success",
+    results: data.length,
+    data: {
+      data,
+    },
+  });
+
+  next();
+};
+
+exports.updatemember = async (req, res, next) => {
+  const data = await Member.findByIdAndUpdate(req.params.id, req.body.formData);
   console.log(data);
   // SEND RESPONSE
   res.status(200).json({

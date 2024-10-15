@@ -90,9 +90,11 @@ app.post("/api/v1/users/updateuser/:id", authController.updateuser);
 app.get("/api/v1/users/delete/:id", authController.deleteuser);
 
 // user Routes :
-app.get("/api/v1/users/getdata/:token", authController.getdata);
+// app.get("/api/v1/users/getdata/:token", authController.getdata);
 app.post("/api/v1/users/createmember", userController.createmember);
-app.use("/api/v1/users/getusers", authController.getAllUsers);
+app.post("/api/v1/users/updateuser/:id", authController.updatemember);
+app.get("/api/v1/users/getusers", authController.getAllUsers);
+app.get("/api/v1/users/deletemember/:id", authController.deletemember);
 
 // activity Routes :
 app.post("/api/v1/users/createactivity", activityController.createActivity);

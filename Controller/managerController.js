@@ -1,3 +1,5 @@
+const User = require("../Models/user");
+
 exports.getAllmanagers = async (req, res, next) => {
   const data = await User.find({ role: "Manager" });
 

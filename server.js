@@ -38,48 +38,59 @@ mongoose
 // auth Routes :
 app.use("/api/v1/users/login", authController.login);
 
-app.use("/api/v1/users/getallusers", authController.getAll);
-app.use(
+app.get("/api/v1/users/getallusers", authController.getAll);
+app.get(
   "/api/v1/users/dateasc",
   userController.aliasTopToursasc,
   userController.getAll
 );
-app.use(
+app.get(
   "/api/v1/users/datedesc",
   userController.aliasTopToursdesc,
   userController.getAll
 );
 
-app.use(
+app.get(
   "/api/v1/users/active",
   userController.aliasTopToursAasc,
   userController.getAll
 );
-app.use(
+app.get(
   "/api/v1/users/activedesc",
   userController.aliasTopToursAdesc,
   userController.getAll
 );
 
-app.use(
+app.get(
   "/api/v1/users/lactive",
   userController.aliasTopTourslasc,
   userController.getAll
 );
-app.use(
+app.get(
   "/api/v1/users/lactivedesc",
   userController.aliasTopToursldesc,
   userController.getAll
 );
 
-app.use(
+app.get(
   "/api/v1/users/notactive",
   userController.aliasTopToursnotasc,
   userController.getAll
 );
-app.use(
+app.get(
   "/api/v1/users/notactivedesc",
   userController.aliasTopToursnotdesc,
+  userController.getAll
+);
+
+app.get(
+  "/api/v1/users/moved",
+  userController.aliasMoved,
+  userController.getAll
+);
+app.get(
+  "/api/v1/users/moveddesc",
+  userController.aliasMoveddesc,
   userController.getAll
 );
 

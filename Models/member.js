@@ -16,7 +16,7 @@ const memberSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Active", "Less Active", "Do Not Contact"],
+    enum: ["Active", "Less Active", "Do Not Contact", "Moved"],
     default: "Active",
   },
   datecreated: {

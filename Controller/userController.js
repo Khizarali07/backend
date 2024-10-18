@@ -71,6 +71,17 @@ exports.aliasTopToursnotdesc = (req, res, next) => {
   next();
 };
 
+exports.aliasMoved = (req, res, next) => {
+  req.query.sort = "datecreated";
+  req.query.fields = { status: "Moved" };
+  next();
+};
+exports.aliasMoveddesc = (req, res, next) => {
+  req.query.sort = "-datecreated";
+  req.query.fields = { status: "Moved" };
+  next();
+};
+
 exports.createmember = async (req, res, next) => {
   const newUser = await Member.create(req.body.formData);
   res.status(201).json({
